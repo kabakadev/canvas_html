@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canvas Shapes Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 2em;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        canvas {
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            background: #f8f9fa;
+            margin: 20px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .controls {
+            margin-top: 20px;
+        }
+        
+        button {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 5px;
+            transition: transform 0.2s;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .code-section {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: left;
+            border: 1px solid #e9ecef;
+        }
+        
+        .code-section h3 {
+            color: #495057;
+            margin-top: 0;
+        }
+        
+        pre {
+            background: #343a40;
+            color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>HTML5 Canvas Demo</h1>
+        <p class="subtitle">Drawing Rectangles and Circles with Colors and Borders</p>
+        
+        <canvas id="myCanvas" width="500" height="300"></canvas>
+        
+        <div class="controls">
+            <button onclick="drawShapes()">Redraw Shapes</button>
+            <button onclick="clearCanvas()">Clear Canvas</button>
+            <button onclick="animateShapes()">Animate</button>
+        </div>
+        
+        <div class="code-section">
+            <h3>Key Canvas Methods Used:</h3>
+            <pre><code>// Get canvas context
+const ctx = canvas.getContext('2d');
+
+// Drawing a filled rectangle
+ctx.fillStyle = '#ff6b6b';
+ctx.fillRect(x, y, width, height);
+
+// Drawing rectangle border
+ctx.strokeStyle = '#2c3e50';
+ctx.lineWidth = 3;
+ctx.strokeRect(x, y, width, height);
+
+// Drawing a circle
+ctx.beginPath();
+ctx.arc(x, y, radius, 0, 2 * Math.PI);
+ctx.fillStyle = '#4ecdc4';
+ctx.fill();
+ctx.stroke();</code></pre>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        function drawShapes() {
+            // Clear the canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw Rectangle 1 - Filled with border
+            ctx.fillStyle = '#ff6b6b'; // Coral red fill
+            ctx.fillRect(50, 50, 150, 100);
+            
+            ctx.strokeStyle = '#2c3e50'; // Dark blue-gray border
+            ctx.lineWidth = 3;
+            ctx.strokeRect(50, 50, 150, 100);
+            
+            // Draw Rectangle 2 - Just border (outline)
+            ctx.strokeStyle = '#e74c3c'; // Red border
+            ctx.lineWidth = 4;
+            ctx.strokeRect(250, 80, 120, 80);
+            
+            // Draw Circle 1 - Filled with border
+            ctx.beginPath();
+            ctx.arc(125, 220, 50, 0, 2 * Math.PI); // x, y, radius, startAngle, endAngle
+            ctx.fillStyle = '#4ecdc4'; // Turquoise fill
+            ctx.fill();
+            
+            ctx.strokeStyle = '#16a085'; // Darker turquoise border
+            ctx.lineWidth = 4;
+            ctx.stroke();
+            
+            // Draw Circle 2 - Just border (outline)
+            ctx.beginPath();
+            ctx.arc(350, 200, 40, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#9b59b6'; // Purple border
+            ctx.lineWidth = 5;
+            ctx.stroke();
+            
+            // Draw Circle 3 - Different style
+            ctx.beginPath();
+            ctx.arc(420, 100, 35, 0, 2 * Math.PI);
+            ctx.fillStyle = '#f39c12'; // Orange fill
+            ctx.fill();
+            
+            ctx.strokeStyle = '#d35400'; // Darker orange border
+            ctx.lineWidth = 2;
+            ctx.stroke();
+        }
+        
+        function clearCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+        }
+        
+        function animateShapes() {
+            let frame = 0;
+            const animate = () => {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                
+                const time = frame * 0.05;
+                
+                // Animated rectangle
+                const rectX = 50 + Math.sin(time) * 30;
+                const rectY = 50 + Math.cos(time) * 20;
+                
+                ctx.fillStyle = `hsl(${frame % 360}, 70%, 60%)`;
+                ctx.fillRect(rectX, rectY, 150, 100);
+                
+                ctx.strokeStyle = '#2c3e50';
+                ctx.lineWidth = 3;
+                ctx.strokeRect(rectX, rectY, 150, 100);
+                
+                // Animated circles
+                for (let i = 0; i < 3; i++) {
+                    ctx.beginPath();
+                    const circleX = 300 + Math.cos(time + i * 2) * 80;
+                    const circleY = 150 + Math.sin(time + i * 2) * 60;
+                    const radius = 25 + Math.sin(time + i) * 10;
+                    
+                    ctx.arc(circleX, circleY, radius, 0, 2 * Math.PI);
+                    ctx.fillStyle = `hsl(${(frame + i * 120) % 360}, 70%, 60%)`;
+                    ctx.fill();
+                    
+                    ctx.strokeStyle = '#2c3e50';
+                    ctx.lineWidth = 2;
+                    ctx.stroke();
+                }
+                
+                frame++;
+                if (frame < 300) {
+                    requestAnimationFrame(animate);
+                } else {
+                    drawShapes(); // Return to static shapes
+                }
+            };
+            animate();
+        }
+        
+        // Draw initial shapes when page loads
+        drawShapes();
+    </script>
+</body>
+</html>
