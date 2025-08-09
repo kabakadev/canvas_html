@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Color Palette Generator Project</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="project-header">
+        <h1>🎨 Mini Project: Color Palette Generator</h1>
+        <span class="challenge-level">Beginner Friendly</span>
+      </div>
+
+      <div class="project-description">
+        <h3>🎯 What You'll Build</h3>
+        <p>
+          Create an interactive tool that generates beautiful color palettes!
+          Users can:
+        </p>
+        <ul>
+          <li>Generate random color combinations</li>
+          <li>Click on colors to see their hex codes</li>
+          <li>Create different palette styles (warm, cool, monochrome)</li>
+          <li>Save their favorite combinations</li>
+        </ul>
+      </div>
+
+      <div class="working-example">
+        <h3>✨ Working Example (Try it!)</h3>
+        <canvas id="exampleCanvas" width="500" height="120"></canvas>
+        <div class="controls">
+          <button id="randomBtn">🎲 Random Palette</button>
+          <button id="warmBtn">🔥 Warm Colors</button>
+          <button id="coolBtn">❄️ Cool Colors</button>
+          <button id="monochromeBtn">⚫ Monochrome</button>
+        </div>
+        <div
+          id="colorInfo"
+          style="margin-top: 15px; font-weight: bold; color: #333"
+        ></div>
+      </div>
+
+      <div class="requirements">
+        <h3>📋 Project Requirements</h3>
+        <ol>
+          <li>
+            <strong>Canvas Setup:</strong> 500x120px canvas for displaying 5
+            color squares
+          </li>
+          <li>
+            <strong>Basic Function:</strong> Generate and display 5 random
+            colors as rectangles
+          </li>
+          <li>
+            <strong>Interactivity:</strong> Click on any color to show its hex
+            code
+          </li>
+          <li>
+            <strong>Style Buttons:</strong> At least 3 different palette types
+            (random, warm, cool)
+          </li>
+          <li>
+            <strong>Visual Polish:</strong> Nice styling and smooth interactions
+          </li>
+        </ol>
+      </div>
+
+      <div class="step-by-step">
+        <h3>🛠️ Step-by-Step Guide</h3>
+        <div class="step">
+          <h4>Step 1: HTML Structure</h4>
+          <p>
+            Create a canvas, some buttons, and a div to show color information.
+          </p>
+        </div>
+        <!-- Other steps remain unchanged -->
+      </div>
+
+      <div class="demo-section">
+        <h3>🚀 Your Working Area</h3>
+        <p>
+          <em
+            >This is where you'll build your project! Start with the code
+            below:</em
+          >
+        </p>
+        <canvas id="myCanvas" width="500" height="120"></canvas>
+        <div class="controls">
+          <button id="userRandomBtn">🎲 Random Palette</button>
+          <button id="userWarmBtn">🔥 Warm Colors</button>
+          <button id="userCoolBtn">❄️ Cool Colors</button>
+          <button id="userMonochromeBtn">⚫ Monochrome</button>
+        </div>
+        <div
+          id="userColorInfo"
+          style="margin-top: 15px; font-weight: bold; color: #333"
+        ></div>
+        <div class="code-starter">
+          // Starter Code Template const canvas =
+          document.getElementById('myCanvas'); const ctx =
+          canvas.getContext('2d'); // Array to store current palette let
+          currentPalette = []; // Function to generate random colors function
+          generateRandomColor() { const hue = Math.random() * 360; const
+          saturation = 50 + Math.random() * 40; // 50-90% const lightness = 40 +
+          Math.random() * 20; // 40-60% return `hsl(${hue}, ${saturation}%,
+          ${lightness}%)`; } // Function to draw the palette function
+          drawPalette() { ctx.clearRect(0, 0, canvas.width, canvas.height); //
+          TODO: Draw 5 rectangles with your colors // Each rectangle: 100px
+          wide, 120px height // Hint: Use a for loop! } // Function to generate
+          new random palette function generateRandomPalette() { currentPalette =
+          []; // TODO: Generate 5 random colors // TODO: Call drawPalette() } //
+          TODO: Add click event listener // TODO: Add functions for different
+          palette types
+        </div>
+      </div>
+
+      <!-- Other sections remain unchanged -->
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
