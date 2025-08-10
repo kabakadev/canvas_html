@@ -15,3 +15,16 @@ ctx.fill();
 ctx.strokeStyle = "blue";
 ctx.lineWidth = 4;
 ctx.stroke();
+
+function drawColorRectangle(x, color) {
+  ctx.fillStyle = color;
+  ctx.fillRect(x, 30, 80, 70); // x position changes, others stay the same
+  return color;
+}
+const colors = ["red", "blue", "green", "orange", "purple"]; //Loop to draw each one
+
+function drawMultipleRectangles() {
+  for (let i = 0; i < colors.length; i++) {
+    drawColorRectangle(i, colors[i]);
+  }
+}
