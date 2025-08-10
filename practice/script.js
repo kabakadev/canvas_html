@@ -1,12 +1,5 @@
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
-//draw rectangle
-ctx.fillStyle = "skyblue"; //fill color
-ctx.strokeStyle = "blue";
-ctx.lineWidth = 4;
-ctx.fillRect(30, 30, 100, 70); // x,y,width, height
-ctx.strokeRect(30, 30, 100, 70);
-
 //draw circle
 ctx.beginPath();
 ctx.arc(250, 80, 40, 0, Math.PI * 2); // x,y radius, start angle,end angle

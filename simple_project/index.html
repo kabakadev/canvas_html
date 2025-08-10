@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building Color Palette Step by Step</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>🎨 Building Color Palette Step by Step</h1>
+    <p>
+      <strong
+        >Let's use your call stack knowledge to build this
+        systematically!</strong
+      >
+    </p>
+
+    <!-- STEP 1: Single Color Rectangle -->
+    <div class="step">
+      <h3>Step 1: Draw One Rectangle (Like your current code!)</h3>
+      <p>You already know how to do this! Let's start with what you can do:</p>
+
+      <div class="code-block">
+        // This is what you already know how to do: const canvas =
+        document.getElementById("step1Canvas"); const ctx =
+        canvas.getContext("2d"); ctx.fillStyle = "skyblue"; ctx.fillRect(30, 30,
+        100, 70);
+      </div>
+
+      <canvas id="step1Canvas" width="400" height="120"></canvas>
+      <button onclick="step1Demo()">Draw Single Rectangle</button>
+
+      <div class="explanation">
+        <strong>✅ You already know this!</strong> Now let's use a function to
+        make it reusable.
+      </div>
+    </div>
+
+    <!-- STEP 2: Function to Draw Rectangle -->
+    <div class="step">
+      <h3>Step 2: Make a Function (Like your multiply function!)</h3>
+      <p>
+        Just like you made <code>multiply(x, y)</code>, let's make
+        <code>drawColorRectangle(x, color)</code>:
+      </p>
+
+      <div class="code-block">
+        // Breaking it into a function (like you did with multiply!) function
+        drawColorRectangle(x, color) { ctx.fillStyle = color; ctx.fillRect(x,
+        30, 80, 70); // x position changes, others stay same return color; //
+        return the color (like multiply returned x*y) }
+      </div>
+
+      <canvas id="step2Canvas" width="400" height="120"></canvas>
+      <button onclick="step2Demo()">Draw With Function</button>
+
+      <div class="call-stack-demo">
+        <strong>🔄 Call Stack Thinking:</strong><br />
+        When we call <code>drawColorRectangle(50, "red")</code>:<br />
+        1. Function gets called with x=50, color="red"<br />
+        2. Sets fillStyle to "red"<br />
+        3. Draws rectangle at position 50<br />
+        4. Returns "red"<br />
+        5. Function completes and pops off stack
+      </div>
+    </div>
+
+    <!-- STEP 3: Loop to Draw Multiple -->
+    <div class="step">
+      <h3>Step 3: Draw Multiple Rectangles Using a Loop</h3>
+      <p>
+        Now let's call our function multiple times (like calling functions in
+        your call stack example):
+      </p>
+
+      <div class="code-block">
+        // Array of colors (like your a,b,c values in isRightAngle) const colors
+        = ["red", "blue", "green", "orange", "purple"]; // Loop to draw each one
+        (calling our function multiple times) function drawMultipleRectangles()
+        { for (let i = 0; i < colors.length; i++) { drawColorRectangle(i * 80,
+        colors[i]); // x position = i * 80 } }
+      </div>
+
+      <canvas id="step3Canvas" width="400" height="120"></canvas>
+      <button onclick="step3Demo()">Draw Multiple Rectangles</button>
+
+      <div class="call-stack-demo">
+        <strong>🔄 Call Stack for Loop:</strong><br />
+        Loop calls drawColorRectangle 5 times:<br />
+        • drawColorRectangle(0, "red") → draws at x=0<br />
+        • drawColorRectangle(80, "blue") → draws at x=80<br />
+        • drawColorRectangle(160, "green") → draws at x=160<br />
+        • And so on... each function call completes before next one starts!
+      </div>
+    </div>
+
+    <!-- STEP 4: Random Color Function -->
+    <div class="step">
+      <h3>Step 4: Random Color Generator (New Function!)</h3>
+      <p>
+        Let's create a function that generates random colors (like your square
+        function used multiply):
+      </p>
+
+      <div class="code-block">
+        // Simple random color generator function generateRandomColor() { const
+        colors = ["red", "blue", "green", "orange", "purple", "pink", "yellow",
+        "cyan", "magenta", "lime"]; const randomIndex = Math.floor(Math.random()
+        * colors.length); return colors[randomIndex]; // return random color }
+        // Use it in our drawing function function drawRandomPalette() { for
+        (let i = 0; i < 5; i++) { const randomColor = generateRandomColor(); //
+        call our function! drawColorRectangle(i * 80, randomColor); } }
+      </div>
+
+      <canvas id="step4Canvas" width="400" height="120"></canvas>
+      <button onclick="step4Demo()">Generate Random Palette!</button>
+      <button onclick="clearStep4()">Clear Canvas</button>
+
+      <div class="explanation">
+        <strong>🎉 This is your basic palette generator!</strong> Each click
+        gives you 5 random colors.
+      </div>
+    </div>
+
+    <!-- STEP 5: Your Turn -->
+    <div class="step">
+      <h3>Step 5: Your Turn to Code!</h3>
+      <p>
+        Now try building this yourself! Here's the template that matches your
+        coding style:
+      </p>
+
+      <div class="code-block">
+        // practice.html (same as your style!) &lt;!DOCTYPE html&gt; &lt;html
+        lang="en"&gt; &lt;head&gt; &lt;meta charset="UTF-8" /&gt;
+        &lt;title&gt;My Color Palette&lt;/title&gt; &lt;/head&gt; &lt;body&gt;
+        &lt;h2&gt;My Color Palette Generator&lt;/h2&gt; &lt;canvas id="myCanvas"
+        width="400" height="120" style="border: 1px solid
+        #ccc"&gt;&lt;/canvas&gt; &lt;button onclick="drawRandomPalette()"&gt;New
+        Colors!&lt;/button&gt; &lt;script src="script.js"&gt;&lt;/script&gt;
+        &lt;/body&gt; &lt;/html&gt;
+      </div>
+
+      <div class="code-block">
+        // script.js (try to write this yourself!) const canvas =
+        document.getElementById("myCanvas"); const ctx =
+        canvas.getContext("2d"); // Function 1: Draw one colored rectangle
+        function drawColorRectangle(x, color) { // YOUR CODE HERE: set fillStyle
+        and draw rectangle } // Function 2: Generate random color function
+        generateRandomColor() { // YOUR CODE HERE: return random color from
+        array } // Function 3: Draw complete palette function
+        drawRandomPalette() { ctx.clearRect(0, 0, canvas.width, canvas.height);
+        // clear first // YOUR CODE HERE: loop 5 times, draw rectangles }
+      </div>
+
+      <div class="explanation">
+        <strong>💡 Challenge:</strong> Try to write the three functions above.
+        Start with <code>drawColorRectangle</code> since you already know how to
+        draw rectangles!
+      </div>
+    </div>
+
+    <!-- STEP 6: Next Steps -->
+    <div class="step">
+      <h3>Step 6: Once You Get This Working...</h3>
+      <p>After you complete the basic version, we can add:</p>
+      <ul>
+        <li>
+          🖱️ <strong>Click detection</strong> - detect which color was clicked
+        </li>
+        <li>🌈 <strong>HSL colors</strong> - create better random colors</li>
+        <li>🔥 <strong>Themed palettes</strong> - warm/cool color functions</li>
+        <li>✨ <strong>Animation</strong> - smooth color transitions</li>
+      </ul>
+
+      <div class="explanation">
+        <strong>🚀 Remember:</strong> Each new feature is just another function
+        that builds on what you already know!
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
